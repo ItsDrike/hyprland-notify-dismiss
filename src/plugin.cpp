@@ -21,14 +21,17 @@ std::string dismissNotify(CVarList vars)
     int amount = -1;
 
     if (vars.size() > 1) {
-        const auto AMOUNT = vars[1];
-        if (!isNumber(AMOUNT))
-            return "invalid arg 1";
+        auto amount = vars[1];
+        amount.erase(std::remove(amount.begin(), amount.end(), '\n'), amount.end()); // remove the newline char at the end
+
+        if (!isNumber(amount))
+            return "invalid arg 1 NaN (" + amount + ")";
+
         try {
-            amount = std::stoi(AMOUNT);
+            amount = std::stoi(amount);
         }
         catch (std::exception& e) {
-            return "invalid arg 1";
+            return "invalid arg 1 stoi EXC";
         }
     }
 
