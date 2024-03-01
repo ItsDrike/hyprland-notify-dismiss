@@ -4,7 +4,7 @@ authors = ["ItsDrike"]
 commit_pins = [
   [
     "1c460e98f870676b15871fe4e5bfeb1a32a3d6d8",
-    "13d716046562cf2081cd8679562597ccf33f033d",
+    "268c8ef7864282cd0c5d660d5d89e1c3187b6ae4",
   ], # 0.36.0
 ]
 
