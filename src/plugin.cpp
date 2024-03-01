@@ -44,9 +44,11 @@ std::string newDispatchNotify(eHyprCtlOutputFormat format, std::string request)
 {
     CVarList vars(request, 0, ' ');
 
-    if (vars[0] == "notifydismiss") {
+    auto cmd = vars[0];
+    cmd.erase(std::remove(cmd.begin(), cmd.end(), '\n'), cmd.end()); // remove the newline char at the end
+
+    if (cmd == "notifydismiss")
         return dismissNotify(vars);
-    }
 
     auto resp = ((dispatchNotifyFuncT)g_pDispatchNotifyHook->m_pOriginal)(format, request);
     return resp;
