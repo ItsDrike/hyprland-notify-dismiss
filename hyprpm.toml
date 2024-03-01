@@ -1,0 +1,9 @@
+[repository]
+name = "notify-dismiss"
+authors = ["ItsDrike"]
+
+[notify-dismiss]
+description = "Add notifydismiss hyprctl command"
+authors = ["ItsDrike"]
+output = "notify-dismiss.so"
+build = ["make all"]
