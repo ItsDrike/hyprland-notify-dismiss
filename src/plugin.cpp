@@ -3,15 +3,34 @@
 #include <hyprland/src/debug/HyprNotificationOverlay.hpp>
 #include <hyprland/src/helpers/VarList.hpp>
 
-void CHyprNotificationOverlay::dismissNotifications(const int amount)
+// HACK: This structure has the same members as the CHyprNotificationOverlay class, but declared as public
+// This allows us to recast the g_pHyprNotificationOverlay as a pointer to this structure, and access it's
+// private variables. This is incredibly hacky, and I'm not sure it will work if hyprland was compiled with
+// a different compiler (or different settings) than the plugin, but it's the only way I could think of to
+// be able to access the private variables.
+struct DummyHyprNotificationOverlay {
+    CBox m_bLastDamage;
+    std::deque<std::unique_ptr<SNotification>> m_dNotifications;
+    cairo_surface_t* m_pCairoSurface = nullptr;
+    cairo_t* m_pCairo = nullptr;
+    CMonitor* m_pLastMonitor = nullptr;
+    CTexture m_tTexture;
+    eIconBackend m_eIconBackend = ICONS_BACKEND_NONE;
+    std::string m_szIconFontName = "Sans";
+};
+
+void dismissNotifications(const int amount)
 {
+    // HACK: This is horrendous
+    DummyHyprNotificationOverlay* dummyOverlay = reinterpret_cast<DummyHyprNotificationOverlay*>(g_pHyprNotificationOverlay.get());
+
     if (amount == -1)
-        m_dNotifications.clear();
+        dummyOverlay->m_dNotifications.clear();
     else {
-        const int AMT = std::min(amount, static_cast<int>(m_dNotifications.size()));
+        const int AMT = std::min(amount, static_cast<int>(dummyOverlay->m_dNotifications.size()));
 
         for (int i = 0; i < AMT; ++i) {
-            m_dNotifications.pop_front();
+            dummyOverlay->m_dNotifications.pop_front();
         }
     }
 }
@@ -35,7 +54,7 @@ std::string dismissNotify(CVarList vars)
         }
     }
 
-    g_pHyprNotificationOverlay->dismissNotifications(amount);
+    dismissNotifications(amount);
 
     return "ok";
 }
