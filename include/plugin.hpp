@@ -1,0 +1,9 @@
+#include "globals.hpp"
+
+/* Function triggered on `hyprctl notify*` command
+ *
+ * \param[in] format      ...
+ * \param[in] request     ...
+ * \return  ...
+ */
+std::string newDispatchNotify(eHyprCtlOutputFormat format, std::string request);
