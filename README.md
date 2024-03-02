@@ -8,8 +8,7 @@ via the hyprctl socket (`.socket.sock`, not `.socket2.sock`).
 > https://github.com/hyprwm/Hyprland/pull/4790 making this plugin pointless.
 >
 > If you need support for the feature, you simply build Hyprland from the
-> latest master (or at least from
-> https://github.com/hyprwm/Hyprland/commit/be89d6faa988f6bd33a66f02746872c649a16180).
+> latest master (or at least from commit [`be89d6f`](https://github.com/hyprwm/Hyprland/commit/be89d6faa988f6bd33a66f02746872c649a16180)).
 >
 > If you don't want to build Hyprland yourself, and instead prefer to use the
 > stable releases, you can keep using this plugin until the next release comes
