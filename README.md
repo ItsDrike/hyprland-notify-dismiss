@@ -6,6 +6,8 @@ via the hyprctl socket (`.socket.sock`, not `.socket2.sock`).
 > [!WARNING]
 > The support for this feature was introduced into Hyprland in
 > https://github.com/hyprwm/Hyprland/pull/4790 making this plugin pointless.
+> (Note that in the official version, the hyprctl command is `dismissnotify`,
+> not `notifydismiss`)
 >
 > If you need support for the feature, you simply build Hyprland from the
 > latest master (or at least from commit [`be89d6f`](https://github.com/hyprwm/Hyprland/commit/be89d6faa988f6bd33a66f02746872c649a16180)).
