@@ -4,10 +4,17 @@ This is a simple plugin that adds support for sending `notifydismiss` requests
 via the hyprctl socket (`.socket.sock`, not `.socket2.sock`).
 
 > [!WARNING]
-> This is a hacky implementation, just to temporarily bring in the support for
-> this feature. Don't expect this plugin to be a long-term solution, I will
-> remove this repository once https://github.com/hyprwm/Hyprland/issues/4787 is
-> merged, bringing this support in officially.
+> The support for this feature was introduced into Hyprland in
+> https://github.com/hyprwm/Hyprland/pull/4790 making this plugin pointless.
+>
+> If you need support for the feature, you simply build Hyprland from the
+> latest master (or at least from
+> https://github.com/hyprwm/Hyprland/commit/be89d6faa988f6bd33a66f02746872c649a16180).
+>
+> If you don't want to build Hyprland yourself, and instead prefer to use the
+> stable releases, you can keep using this plugin until the next release comes
+> out. However once that happens, I will archive or even delete this
+> repository.
 
 ## Usage
 
